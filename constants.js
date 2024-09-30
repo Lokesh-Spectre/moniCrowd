@@ -9,7 +9,9 @@ const DB = {
     dialect: "mysql",
 };
 const server ={
-    PORT:3000
+    PORT:3000,
+    mqtt_broker:"mqtt://cosmohub"
 }
 const forceSync = false;
+export { DB,TARGET,server,forceSync };
 export default { DB,TARGET,server,forceSync };

@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "dc6d722d-6e63-42d0-bc1f-85555a6331aa",
+		"name": "moniCrowdBackend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33498246"
+	},
+	"item": [
+		{
+			"name": "sensors",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"LABEL\":\"AB1-202\",\n    \"L1\":false,\n    \"L2\":true,\n    \"L3\":false,\n    \"L4\":true,\n    \"peopleCount\":10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sensors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sensors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transulations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"roomName\":\"{{roomName}}\",\n    \"deviceName\":\"{{deviceName}}\",\n    \"pin\":{{pin}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/translations",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"translations"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

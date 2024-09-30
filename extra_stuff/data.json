@@ -1,0 +1,19 @@
+[
+  {
+    "roomName":"AB1-202",
+    "deviceName":"L1",
+    "pin":25
+  },{
+    "roomName":"AB1-202",
+    "deviceName":"L2",
+    "pin":26
+  },{
+    "roomName":"AB1-202",
+    "deviceName":"L3",
+    "pin":27
+  },{
+    "roomName":"AB1-202",
+    "deviceName":"L4",
+    "pin":33
+  }
+]
