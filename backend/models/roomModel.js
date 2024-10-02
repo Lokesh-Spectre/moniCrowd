@@ -11,7 +11,7 @@ import constants from "../constants.js";
     },
     {
       freezeTableName: true,
-      timestamps: true
+      timestamps: false
     }
   );
 

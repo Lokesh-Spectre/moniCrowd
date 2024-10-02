@@ -11,7 +11,7 @@ const transulation = db.define("transulation",
   },
   {
     freezeTableName: true,
-    timestamps: true
+    timestamps: false
   }
 );
 
