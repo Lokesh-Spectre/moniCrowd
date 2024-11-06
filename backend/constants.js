@@ -10,7 +10,7 @@ const DB = {
 };
 const server ={
     PORT:3000,
-    mqtt_broker:"mqtt://cosmohub"
+    mqtt_broker:"mqtt://localhost"
 }
 const forceSync = false;
 export { DB,TARGET,server,forceSync };

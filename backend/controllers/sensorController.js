@@ -1,7 +1,10 @@
 import express from "express";
 import transulationModel from "../models/transulationModel.js";
 import roomModel from "../models/roomModel.js";
-import { mqClient } from "../mqtt.js";
+import mqtt from "mqtt";
+import {server} from "../constants.js";
+
+const mqClient = mqtt.connect(server.mqtt_broker);
 
 const router = express.Router();
 router.post("/",async (req,res)=>{
@@ -31,15 +34,18 @@ router.post("/",async (req,res)=>{
         res.status(500).send({message:"there is no pin transulation entries for given label"});
         return;
     }
-    console.log(room)
+    // console.log(room)
     const topic = `rooms/${room.roomName}`
     const payload = {}
     for (var device in room.devicesState ){ 
         
-        var state = room.devicesState[device]==true?1:0;
+        var state = room.devicesState[device]==true?"HIGH":"LOW";
         var pin = trans[device];
-        payload[pin] = state;
+        if (pin!=undefined){
+            payload[pin] = state;
+        }
     }
+    
     mqClient.publish(topic,JSON.stringify(payload));
     console.log(`TOPIC: ${topic}\npayload: ${JSON.stringify(payload)}`);
     res.send(200);
