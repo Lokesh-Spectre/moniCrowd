@@ -2,12 +2,12 @@
 #include <PubSubClient.h>
 #include <ArduinoJson.h>
 // WiFi
-const char *ssid = "ACTFIBERNET"; // Enter your WiFi name
-const char *password = "act12345";  // Enter WiFi password
+//  char *ssid = "ACTFIBERNET"; // Enter your WiFi name
+//  char *password = "act12345";  // Enter WiFi password
 
 // MQTT Broker
-const char *mqtt_broker = "192.168.0.107";
-const char *topic = "rooms/AB1-202";
+//  char *mqtt_broker = "192.168.0.107";
+const char* topic = "rooms/AB1-202";
 const char *mqtt_username = "";
 const char *mqtt_password = "";
 const int mqtt_port = 1883;
@@ -20,6 +20,12 @@ void setup() {
   // pinMode(2,OUTPUT);
     // Set software serial baud to 115200;
     Serial.begin(115200);
+    const char* ssid = getLine();
+    Serial.println(ssid);
+    const char* password = getLine();
+    Serial.println(password);
+    const char* mqtt_broker = getLine();
+    Serial.println(mqtt_broker);
     // Connecting to a WiFi network
     WiFi.begin(ssid, password);
     while (WiFi.status() != WL_CONNECTED) {
@@ -67,7 +73,7 @@ void callback(char *topic, byte *payload, unsigned int length) {
     pinMode(pin,OUTPUT);
     digitalWrite(pin,state);
     
-    Serial.printf("pin: %d\nState: %d\n",pin,state);
+    Serial.printf("%d:\t%d\n",pin,state);
   }
   Serial.println("-----------------------");
   Serial.flush();
@@ -81,6 +87,20 @@ void callback(char *topic, byte *payload, unsigned int length) {
     // Serial.println();
 }
 
+char* getLine(){
+  bool t=true;
+  String s;
+  while (!Serial.available() && t){
+    s= Serial.readStringUntil('\n');
+    t = s.length()==0;
+  }
+  int n = s.length();
+  char* result = (char*)malloc(n+1);
+  if (result!=NULL){
+    strcpy(result,s.c_str());
+  }
+  return result;
+}
 void loop() {
     client.loop();
 }
