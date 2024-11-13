@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"LABEL\":\"AB1-202\",\n    \"L1\":false,\n    \"L2\":true,\n    \"L3\":false,\n    \"L4\":true,\n    \"peopleCount\":10\n}",
+					"raw": "{\n    \"LABEL\":\"AB1-202\",\n    \"L1\":true,\n    \"L2\":false,\n    \"L3\":false,\n    \"L4\":true,\n    \"peopleCount\":10\n}",
 					"options": {
 						"raw": {
 							"language": "json"
